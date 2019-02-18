@@ -2,7 +2,7 @@
 
 *非递归 快速排序 归并排序 堆排序 基数排序 的实现*
 
-```
+```js
 //快速排序
 function quickSort(arr){
     var parts =[[0,arr.length-1]];
@@ -22,6 +22,7 @@ function quickSort(arr){
             }
             if(i<j){
                 arr[i] = arr[j];
+                arr[j] = pivot;
                 i++;
             }
             while(arr[i]<pivot){
@@ -29,11 +30,11 @@ function quickSort(arr){
             }
             if(i<j){
                 arr[j] = arr[i];
+                arr[i] = pivot;
                 j--;
             }
         }
-        arr[i] = pivot;
-        parts.push([l,i-1],[i+1,r]);
+        parts.push([l,i-1],[j+1,r]);
     }
 }
 //归并排序
