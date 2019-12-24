@@ -17,9 +17,9 @@ function quickSort(arr){
         var mid = arr[midx];
         for(var i = l+1;i<=r;i++){
             if(arr[i]<mid){
-                var temp = arr.splice(i,1);
-                arr.splice(l,0,...temp);
                 midx = i;
+                var temp = arr.splice(i,1);
+                arr.splice(i-1,0,...temp);
             }
         }
         parts .push([l,midx-1],[midx+1,r]);
