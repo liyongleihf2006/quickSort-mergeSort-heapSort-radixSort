@@ -5,36 +5,24 @@
 ```js
 //快速排序
 function quickSort(arr){
-    var parts =[[0,arr.length-1]];
-    while(parts.length){
-        var part = parts.shift();
+    var parts  = [[0,arr.length-1]];
+    while(parts .length){
+        var part = parts .shift();
         var l = part[0];
         var r = part[1];
-        var pivot = arr[l];
-        var i = l;
-        var j = r;
         if(l>=r){
             continue;
         }
-        while(i<j){
-            while(arr[j]>pivot){
-                j--;
-            }
-            if(i<j){
-                arr[i] = arr[j];
-                arr[j] = pivot;
-                i++;
-            }
-            while(arr[i]<pivot){
-                i++;
-            }
-            if(i<j){
-                arr[j] = arr[i];
-                arr[i] = pivot;
-                j--;
+        var midx = l;
+        var mid = arr[midx];
+        for(var i = l+1;i<=r;i++){
+            if(arr[i]<mid){
+                var temp = arr.splice(i,1);
+                arr.splice(l,0,...temp);
+                midx = i;
             }
         }
-        parts.push([l,i-1],[j+1,r]);
+        parts .push([l,midx-1],[midx+1,r]);
     }
 }
 //归并排序
