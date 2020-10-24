@@ -4,25 +4,25 @@
 
 ```js
 //快速排序
-function quickSort(arr){
-    var parts  = [[0,arr.length-1]];
-    while(parts .length){
-        var part = parts .shift();
-        var l = part[0];
-        var r = part[1];
-        if(l>=r){
+function quickSort( arr ) {
+    var parts = [ [ 0, arr.length - 1 ] ];
+    while ( parts.length ) {
+        var part = parts.shift();
+        var l = part[ 0 ];
+        var r = part[ 1 ];
+        if ( l >= r ) {
             continue;
         }
         var midx = l;
-        var mid = arr[midx];
-        for(var i = l+1;i<=r;i++){
-            if(arr[i]<mid){
-                midx = i;
-                var temp = arr.splice(i,1);
-                arr.splice(i-1,0,...temp);
+        var mid = arr[ midx ];
+        for ( var i = l + 1; i <= r; i++ ) {
+            if ( arr[ i ] < mid ) {
+                var temp = arr.splice( i, 1 );
+                arr.splice( midx, 0, ...temp );
+                midx++
             }
         }
-        parts .push([l,midx-1],[midx+1,r]);
+        parts.push( [ l, midx - 1 ], [ midx + 1, r ] );
     }
 }
 //归并排序
